@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        
+        <h1><%= @genre.name %></h1>
+        <h2>Songs in this genre:</h2><br><ul>
+        <%= @genre.songs.each do |song| %>
+
+            <li><%= link_to(song.name, song_path(song))%></li>
+        <% end %></ul>
+        <br>
+        <h2>Artists who play in this genre:</h2><ul>
+        <%= @genre.artists.each.uniq do |artist| %>
+            <li><%= link_to(artist.name, artist_path(artist))%>
+        <% end %></ul>
+        <br>
+        <%= link_to("Genre index", genres_path)%>
+        <%= %>
+    </body>
+</html>
